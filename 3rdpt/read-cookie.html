@@ -6,9 +6,10 @@
 <body>
 <script>
     function testThirdPartyCookie(){
-        if (!window.parent) return;
-        var msg = /third_party_cookie_test=test/.test(document.cookie) ? '3rd-Party-Cookies-Supported' : '3rd-Party-Cookies-Not-Supported';
-        window.parent.postMessage(msg, '*');
+        if (window.parent) {
+            var msg = /third_party_cookie_test=test/.test(document.cookie) ? '3rd-Party-Cookies-Supported' : '3rd-Party-Cookies-Not-Supported';
+            window.parent.postMessage(msg, '*');
+        }
     };
     testThirdPartyCookie()
 </script>
