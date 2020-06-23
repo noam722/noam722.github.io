@@ -5,11 +5,12 @@
 </head>
 <body>
 <script>
-    (function() {
+    function testThirdPartyCookie(){
         if (!window.parent) return;
-        var msg = /s=1/.test(document.cookie) ? '3rd-Party-Cookies-Supported' : '3rd-Party-Cookies-Not-Supported';
+        var msg = /third_party_cookie_test=test/.test(document.cookie) ? '3rd-Party-Cookies-Supported' : '3rd-Party-Cookies-Not-Supported';
         window.parent.postMessage(msg, '*');
-    })();
+    };
+    testThirdPartyCookie()
 </script>
 </body>
 </html>
