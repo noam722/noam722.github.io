@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="scripts/spinThis.css" />
+  
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("html").css("width", (screen.height * 0.85 * (4 / 3)) + "px");
+        $("html").css("height", (screen.height * 0.85) + "px");
+        $(window).bind('mousewheel DOMMouseScroll', function(event) {
+            if (event.ctrlKey == true) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div id="game">
+        <div id="turnTableContainer">
+            <img id="record" src="pics/record.png"></img>
+            <img id="turnTable" src="pics/turnTable2.png"></img>
+            <img id="round" src="pics/round1.png" hidden></img>
+            <input type="text" id="artistGuess" title="Guess the artist" disabled list="artistList" placeholder="Type your guess here..."></input>
+            <button id="submitAnswer" onclick="submitAnswer()" disabled>Submit Answer</button>
+            <text id="roundTry" hidden>3 Tries left</text>
+        </div>
+
+        <div id="albums_container">
+            <text id="albumHeadline" class="headLines">Artist Albums:</text>
+            <br>
+            <br>
+            <textarea id="album1" class="albums" readonly></textarea>
+            <textarea id="album2" class="albums" readonly></textarea>
+            <textarea id="album3" class="albums" readonly></textarea>
+            <text id="hintHeadline" class="headLines" hidden>Hint:</text>
+            <div id="hint" hidden></div>
+
+        </div>
+        <text id="score" class="headLines">Total Score: 0</text>
+        <img id="scroller" src="pics/scroller.png"></img>
+        <button id="newGame" onmouseup="newGame()">New game</button>
+        <datalist id="artistList">
+        </datalist>
+    </div>
+    <div id='gameOverContainer' class='modal'>
+        <div class='modal-content'>
+            <span id='closeX' class='close' onclick="endGame()">X</span>
+            <a id='gameOverMessage'></a>
+        </div>
+    </div>
+    <script src="scripts/spinThis.js"></script>
+    <script src="scripts/topArtists.js"></script>
+    <audio id="rightSound" src="sounds/right.mp3"></audio>
+    <audio id="wrongSound" src="sounds/wrong.mp3"></audio>
+</body>
+
+</html>
